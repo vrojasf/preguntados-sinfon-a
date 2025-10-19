@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Preguntados SinfonIA</title>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+ 
+  <section id="inicio" class="pantalla visible">
+    <div class="categorias-container">
+
+      <div class="categoria c1" data-categoria="Conocimiento General">
+        <div class="icono">
+          <img src="bombilla.png" alt="icono conocimiento general">
+        </div>
+        <span>CONOCIMIENTO GENERAL</span>
+      </div>
+
+      <div class="categoria c2" data-categoria="Historia y Mitología">
+        <div class="icono">
+          <img src="historia.png" alt="icono historia y mitologia">
+        </div>
+        <span>HISTORIA Y MITOLOGÍA</span>
+      </div>
+
+      <div class="categoria c3" data-categoria="Ciencia y Tecnología">
+        <div class="icono">
+          <img src="cienciaYTec.png" alt="icono ciencia y tecnologia">
+        </div>
+        <span>CIENCIA Y TECNOLOGÍA</span>
+      </div>
+      
+      <div class="categoria c4" data-categoria="Geografía">
+        <div class="icono">
+          <img src="geografiaa.png" alt="icono geografia">
+        </div>
+        <span>GEOGRAFÍA</span>
+      </div>
+
+      <div class="categoria c5" data-categoria="Entretenimiento">
+        <div class="icono">
+          <img src="entretenimiento.png" alt="icono entretenimiento">
+        </div>
+        <span>ENTRETENIMIENTO</span>
+      </div>
+
+      <img src="logoS.png" alt="Logo SinfonIA" class="logo" />
+    </div>
+    <button id="reiniciar" class="boton-reiniciar">Comenzar de nuevo</button>
+
+  </section>
+
+  <section id="pregunta" class="pantalla">
+    <div class="pregunta-box">
+      <h2 id="categoriaNombre"></h2>
+      <p id="textoPregunta"></p>
+      <div id="opciones"></div>
+    </div>
+  </section>
+
+  <section id="resultado" class="pantalla">
+    <div class="resultado-box">
+      <h1 id="iconoResultado"></h1>
+      <h2 id="textoResultado"></h2>
+      <p>PUNTAJE TOTAL: <span id="puntaje">0</span></p>
+      <button id="volver">Volver al inicio</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
