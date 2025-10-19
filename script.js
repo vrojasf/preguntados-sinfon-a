@@ -6,16 +6,16 @@ const preguntas = {
       { texto: "Pregunta 3", opciones: ["A", "B", "C", "D"], correcta: 1 },
     ],
     "Historia y Mitología": [
-      { texto: "Pregunta 2", opciones: ["A", "B", "C", "D"], correcta: 1 },
+      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
     ],
     "Ciencia y Tecnología": [
-      { texto: "Pregunta 3", opciones: ["A", "B", "C", "D"], correcta: 1 },
+      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
     ],
     "Geografía": [
-      { texto: "Pregunta 4", opciones: ["A", "B", "C", "D"], correcta: 1 },
+      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
     ],
     "Entretenimiento": [
-      { texto: "Pregunta 5", opciones: ["A", "B", "C", "D"], correcta: 1 },
+      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
     ]
   };
   //Se resetea el puntaje a 0 al hacer click en el boton reiniciar
@@ -43,12 +43,13 @@ const preguntas = {
   document.querySelectorAll(".categoria").forEach(btn => {
     btn.addEventListener("click", () => mostrarPregunta(btn.dataset.categoria));
   });
-  
+  //Función para mostrar una pregunta aleatoria de la categoría seleccionada 
   function mostrarPregunta(categoria) {
     categoriaActual = categoria;
     const lista = preguntas[categoria];
     const pregunta = lista[Math.floor(Math.random() * lista.length)];
-  
+    
+
     inicio.classList.remove("visible");
     pantallaPregunta.classList.add("visible");
   
@@ -63,16 +64,17 @@ const preguntas = {
       opciones.appendChild(boton);
     });
   }
-  
+
+  //Verificacion de respuestas
   function verificarRespuesta(correcta) {
     pantallaPregunta.classList.remove("visible");
     pantallaResultado.classList.add("visible");
   
-    if (correcta) {
+    if (correcta){
       textoResultado.textContent = "CORRECTO +100 PUNTOS";
       iconoResultado.innerHTML = '<img src="correcto.png" alt="Correcto" class="icono-resultado-img">';
       puntaje += 100;
-    } else {
+    }else {
       textoResultado.textContent = "INCORRECTO";
       iconoResultado.innerHTML = '<img src="incorrecto.png" alt="Incorrecto" class="icono-resultado-img">';
     }
