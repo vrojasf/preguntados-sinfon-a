@@ -27,7 +27,7 @@ body {
   
   .logo {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 200px;     
@@ -55,11 +55,16 @@ body {
     transform: scale(1.1);
   }
   
-  .c1 { top: 3%; left: 38%; transform: translateX(-10%); background: #bba1e2; }
-  .c2 { top: 38%; right: -10%;  transform: translateX(-10%); background: #adbee5; }
-  .c3 { bottom: 5%; left: 65%; transform: translateX(-10%);background: #a3e8c9; }
-  .c4 { bottom: 5%; left: 15%; transform: translateX(-10%);background: #e9dbaf; }
-  .c5 { top: 38%; left: -5%;transform: translateX(-10%); background: #e8afcc; }
+  /* Conocimiento general */
+  .c1 { top: 0%; left: 38%; transform: translateX(-10%); background: #bba1e2; }
+  /* Historia y mitologia */
+  .c2 { top: 33%; right: -10%;  transform: translateX(-10%); background: #adbee5; }
+  /* ciencia y tec */
+  .c3 { bottom: 10%; left: 65%; transform: translateX(-10%);background: #a3e8c9; }
+  /* geografia */
+  .c4 { bottom: 10%; left: 15%; transform: translateX(-10%);background: #e9dbaf; }
+  /* Entretenimiento */
+  .c5 { top: 33%; left: -5%;transform: translateX(-10%); background: #e8afcc; }
   
   .icono {
     position: absolute;
@@ -79,7 +84,7 @@ body {
     width: 30px;
     height: 30px;
   }
-  
+
   .c1 .icono { background-color: #7c42d3; } 
   .c2 .icono { background-color: #5b70ce; }  
   .c3 .icono { background-color: #41a679; }  
@@ -95,12 +100,13 @@ body {
   }
 
   .boton-reiniciar {
+    width: 180px;
     position: fixed;           
-    bottom: 15px;           
-    left: 50%;               
+    bottom: 60px;           
+    left: 43%;               
     transform: translateX(-50%);
     padding: 12px 25px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     background-color: #728aa2;
     color: white;
@@ -115,6 +121,37 @@ body {
   .boton-reiniciar:hover {
     background-color: #c298f5;
     transform: translateX(-50%) scale(1.05);
+  }
+
+
+  .boton-aleatorio {
+    width: 180px;
+    position: fixed;
+    bottom: 60px;
+    left: 57%;
+    transform: translateX(-50%);
+    padding: 12px 25px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #728aa2;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+  
+  .boton-aleatorio:hover {
+    background-color: #c298f5;
+    transform: translateX(-50%) scale(1.05);
+  }
+  
+  .categoria.destacada {
+    outline: 3px solid white;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+    transform: scale(1.1); 
   }
 
   
@@ -165,6 +202,8 @@ body {
   }
   
   #volver {
+    font-size: 13px;
+    font-weight: 600;
     margin-top: 20px;
     padding: 10px 20px;
     background: #728aa2;

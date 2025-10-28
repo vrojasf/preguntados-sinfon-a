@@ -23,6 +23,8 @@ const preguntas = {
   document.getElementById("reiniciar").addEventListener("click", () => {
     puntaje = 0;
     document.getElementById("puntaje").textContent = puntaje;
+    document.querySelectorAll(".categoria").forEach(c => c.classList.remove("destacada"));
+
   });
     
   let categoriaActual = "";
@@ -47,8 +49,7 @@ const preguntas = {
   function mostrarPregunta(categoria) {
     categoriaActual = categoria;
     const lista = preguntas[categoria];
-    const pregunta = lista[Math.floor(Math.random() * lista.length)];
-    
+    const pregunta = lista[Math.floor(Math.random() * lista.length)]; //escoge una de la lista de forma random
 
     inicio.classList.remove("visible");
     pantallaPregunta.classList.add("visible");
@@ -86,4 +87,46 @@ const preguntas = {
     pantallaResultado.classList.remove("visible");
     inicio.classList.add("visible");
   });
+
+  // Funcion aleatorio
+const botonGirar = document.getElementById("Girar");
+const categorias = document.querySelectorAll(".categoria");
+let intervalo;
+let indiceActual = 0;
+let girando = false;
+botonGirar.addEventListener("click", () =>{
+  if (girando) return; 
+  girando = true;
+  //numero de vueltas aleatorio
+  let vueltas = 15 + Math.floor(Math.random() *10); // el primer num son las vueltas antes de escoger, dependiendo a cuantas vueltas se quiere que de minimo se debe cambiar este num.
+  let contador = 0;
+
+  // efecto visual cada vez que el "giro" pasa por una categoria 
+  intervalo = setInterval(() => {
+    // Quita el resaltado anterior
+    categorias.forEach(c => c.classList.remove("destacada"));
+
+    // Agrega el efecto a la categoría actual
+    categorias[indiceActual].classList.add("destacada");
+
+    //avanza al siguiente índice
+    indiceActual = (indiceActual + 1) % 5; //5 es por el numero de categorias, depende de cuantas haya
+    contador++;
+
+    // Si se cumple el número de vueltas para de girar
+    if (contador >= vueltas) {
+      clearInterval(intervalo);
+      girando = false;
+
+      // Esta parte es la que elige a la categoria a la que se llegó
+      const categoriaSeleccionada = categorias[(indiceActual -1 + 5) % 5]; //el 5 es por el length de categorias
+      const categoriaNombre = categoriaSeleccionada.dataset.categoria;
+      // pausa antes de mostrar la pregunta
+      setTimeout(() => {
+        mostrarPregunta(categoriaNombre);
+      }, 500);
+    }
+  }, 150); // vel del giro
+});
+
   
