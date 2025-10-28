@@ -45,6 +45,8 @@ const preguntas = {
   document.querySelectorAll(".categoria").forEach(btn => {
     btn.addEventListener("click", () => mostrarPregunta(btn.dataset.categoria));
   });
+
+  
   //Función para mostrar una pregunta aleatoria de la categoría seleccionada 
   function mostrarPregunta(categoria) {
     categoriaActual = categoria;
@@ -129,4 +131,3 @@ botonGirar.addEventListener("click", () =>{
   }, 150); // vel del giro
 });
 
-  
