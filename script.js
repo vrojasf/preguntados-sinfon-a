@@ -23,6 +23,7 @@ const preguntas = {
   document.getElementById("reiniciar").addEventListener("click", () => {
     puntaje = 0;
     document.getElementById("puntaje").textContent = puntaje;
+    document.getElementById("puntaje-actual").textContent = puntaje;
     document.querySelectorAll(".categoria").forEach(c => c.classList.remove("destacada"));
 
   });
@@ -83,6 +84,7 @@ const preguntas = {
     }
   
     puntajeTexto.textContent = puntaje;
+    document.getElementById("puntaje-actual").textContent = puntaje;
   }
   
   volver.addEventListener("click", () => {

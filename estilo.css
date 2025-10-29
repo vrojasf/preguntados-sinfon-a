@@ -27,7 +27,7 @@ body {
   
   .logo {
     position: absolute;
-    top: 45%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 200px;     
@@ -56,15 +56,15 @@ body {
   }
   
   /* Conocimiento general */
-  .c1 { top: 0%; left: 38%; transform: translateX(-10%); background: #bba1e2; }
+  .c1 { top: -5%; left: 38%; transform: translateX(-10%); background: #bba1e2; }
   /* Historia y mitologia */
-  .c2 { top: 33%; right: -10%;  transform: translateX(-10%); background: #adbee5; }
+  .c2 { top: 28%; right: -10%;  transform: translateX(-10%); background: #adbee5; }
   /* ciencia y tec */
-  .c3 { bottom: 10%; left: 65%; transform: translateX(-10%);background: #a3e8c9; }
+  .c3 { bottom: 15%; left: 65%; transform: translateX(-10%);background: #a3e8c9; }
   /* geografia */
-  .c4 { bottom: 10%; left: 15%; transform: translateX(-10%);background: #e9dbaf; }
+  .c4 { bottom: 15%; left: 15%; transform: translateX(-10%);background: #e9dbaf; }
   /* Entretenimiento */
-  .c5 { top: 33%; left: -5%;transform: translateX(-10%); background: #e8afcc; }
+  .c5 { top: 28%; left: -5%;transform: translateX(-10%); background: #e8afcc; }
   
   .icono {
     position: absolute;
@@ -103,7 +103,7 @@ body {
     width: 180px;
     position: fixed;           
     bottom: 60px;           
-    left: 43%;               
+    left: 42.5%;               
     transform: translateX(-50%);
     padding: 12px 25px;
     font-size: 13px;
@@ -128,7 +128,7 @@ body {
     width: 180px;
     position: fixed;
     bottom: 60px;
-    left: 57%;
+    left: 58%;
     transform: translateX(-50%);
     padding: 12px 25px;
     font-size: 13px;
@@ -212,4 +212,23 @@ body {
     border-radius: 8px;
     cursor: pointer;
   }
-  
+
+.puntaje-container {
+  width: 140px;
+  position: fixed;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 25px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #728aa200;
+  color: rgb(36, 35, 35);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 100;
+
+}
