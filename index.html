@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Preguntados SinfonIA</title>
-  <link rel="stylesheet" href="estilo.css" />
+  <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body>
- 
-  <!--Tiene las categorías y botones principales -->
+
+  <!-- PANTALLA DE INICIO -->
   <section id="inicio" class="pantalla visible">
 
-    <!--Contenedor de las categorías -->
     <div class="categorias-container">
-
-      <!-- Cada div con clase "categoria" representa una categoría del juego -->
-      <!-- El atributo data-categoria es para identificar la categoría -->
 
       <div class="categoria c1" data-categoria="Conocimiento General">
         <div class="icono">
-          <img src="bombilla.png" alt="icono conocimiento general">
+          <img src="bombilla.png" alt="Conocimiento General">
         </div>
-         <!--Texto que ve el usuario -->
         <span>CONOCIMIENTO GENERAL</span>
       </div>
 
       <div class="categoria c2" data-categoria="Historia y Mitología">
         <div class="icono">
-          <img src="historia.png" alt="icono historia y mitologia">
+          <img src="historia.png" alt="Historia y Mitología">
         </div>
         <span>HISTORIA Y MITOLOGÍA</span>
       </div>
 
       <div class="categoria c3" data-categoria="Ciencia y Tecnología">
         <div class="icono">
-          <img src="cienciaYTec.png" alt="icono ciencia y tecnologia">
+          <img src="cienciaYTec.png" alt="Ciencia y Tecnología">
         </div>
         <span>CIENCIA Y TECNOLOGÍA</span>
       </div>
-      
+
       <div class="categoria c4" data-categoria="Geografía">
         <div class="icono">
-          <img src="geografiaa.png" alt="icono geografia">
+          <img src="geografiaa.png" alt="Geografía">
         </div>
         <span>GEOGRAFÍA</span>
       </div>
 
       <div class="categoria c5" data-categoria="Entretenimiento">
         <div class="icono">
-          <img src="entretenimiento.png" alt="icono entretenimiento">
+          <img src="entretenimiento.png" alt="Entretenimiento">
         </div>
         <span>ENTRETENIMIENTO</span>
       </div>
 
-      <img src="logoS.png" alt="Logo SinfonIA" class="logo" />
+      <!-- LOGO EN EL CENTRO -->
+      <img src="logoS.png" class="logo" alt="Logo SinfonIA">
+
     </div>
-    <!-- Contenedor del puntaje-->
+
+    <!-- PUNTAJE INICIAL -->
     <div class="puntaje-container">
       Puntaje: <span id="puntaje-actual">0</span>
     </div>
-    <!-- Boton aleatorio -->
-    <button id="Girar" class="boton-aleatorio">Girar</button>
-    <!-- Boton reiniciar -->
-    <button id="reiniciar" class="boton-reiniciar">Comenzar de nuevo</button>
+
+    <!-- BOTONES INFERIORES -->
+    <div class="botones-container">
+      <button id="reiniciar" class="boton-reiniciar">Reiniciar</button>
+      <button id="girar" class="boton-aleatorio">Girar</button>
+    </div>
 
   </section>
 
+  <!-- PANTALLA DE PREGUNTA -->
   <section id="pregunta" class="pantalla">
     <div class="pregunta-box">
       <h2 id="categoriaNombre"></h2>
@@ -73,6 +75,7 @@
     </div>
   </section>
 
+  <!-- PANTALLA DE RESULTADO -->
   <section id="resultado" class="pantalla">
     <div class="resultado-box">
       <h1 id="iconoResultado"></h1>
@@ -83,5 +86,6 @@
   </section>
 
   <script src="script.js"></script>
+
 </body>
 </html>

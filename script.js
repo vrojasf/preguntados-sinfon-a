@@ -1,135 +1,153 @@
 
-const preguntas = {
-    "Conocimiento General": [
-      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
-      { texto: "Pregunta 2", opciones: ["A", "B", "C", "D"], correcta: 1 },
-      { texto: "Pregunta 3", opciones: ["A", "B", "C", "D"], correcta: 1 },
-    ],
-    "Historia y Mitología": [
-      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
-    ],
-    "Ciencia y Tecnología": [
-      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
-    ],
-    "Geografía": [
-      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
-    ],
-    "Entretenimiento": [
-      { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
-    ]
-  };
-  //Se resetea el puntaje a 0 al hacer click en el boton reiniciar
-  let puntaje = 0;
-  document.getElementById("reiniciar").addEventListener("click", () => {
-    puntaje = 0;
-    document.getElementById("puntaje").textContent = puntaje;
-    document.getElementById("puntaje-actual").textContent = puntaje;
-    document.querySelectorAll(".categoria").forEach(c => c.classList.remove("destacada"));
+var preguntas = {
+  "Conocimiento General": [
+    { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 },
+    { texto: "Pregunta 2", opciones: ["A", "B", "C", "D"], correcta: 1 },
+    { texto: "Pregunta 3", opciones: ["A", "B", "C", "D"], correcta: 1 }
+  ],
+  "Historia y Mitología": [
+    { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 }
+  ],
+  "Ciencia y Tecnología": [
+    { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 }
+  ],
+  "Geografía": [
+    { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 }
+  ],
+  "Entretenimiento": [
+    { texto: "Pregunta 1", opciones: ["A", "B", "C", "D"], correcta: 1 }
+  ]
+};
 
-  });
-    
-  let categoriaActual = "";
-  
-  const inicio = document.getElementById("inicio");
-  const pantallaPregunta = document.getElementById("pregunta");
-  const pantallaResultado = document.getElementById("resultado");
-  
-  const categoriaNombre = document.getElementById("categoriaNombre");
-  const textoPregunta = document.getElementById("textoPregunta");
-  const opciones = document.getElementById("opciones");
-  const iconoResultado = document.getElementById("iconoResultado");
-  const textoResultado = document.getElementById("textoResultado");
-  const puntajeTexto = document.getElementById("puntaje");
-  const volver = document.getElementById("volver");
-  
-  
-  document.querySelectorAll(".categoria").forEach(btn => {
-    btn.addEventListener("click", () => mostrarPregunta(btn.dataset.categoria));
-  });
+var puntaje = 0;
+var categoriaActual = "";
 
-  
-  //Función para mostrar una pregunta aleatoria de la categoría seleccionada 
-  function mostrarPregunta(categoria) {
-    categoriaActual = categoria;
-    const lista = preguntas[categoria];
-    const pregunta = lista[Math.floor(Math.random() * lista.length)]; //escoge una de la lista de forma random
+var inicio = document.getElementById("inicio");
+var pantallaPregunta = document.getElementById("pregunta");
+var pantallaResultado = document.getElementById("resultado");
 
-    inicio.classList.remove("visible");
-    pantallaPregunta.classList.add("visible");
-  
-    categoriaNombre.textContent = categoria;
-    textoPregunta.textContent = pregunta.texto;
-    opciones.innerHTML = "";
-  
-    pregunta.opciones.forEach((op, i) => {
-      const boton = document.createElement("button");
-      boton.textContent = `${String.fromCharCode(65 + i)}. ${op}`;
-      boton.onclick = () => verificarRespuesta(i === pregunta.correcta);
-      opciones.appendChild(boton);
-    });
+var categoriaNombre = document.getElementById("categoriaNombre");
+var textoPregunta = document.getElementById("textoPregunta");
+var opciones = document.getElementById("opciones");
+var iconoResultado = document.getElementById("iconoResultado");
+var textoResultado = document.getElementById("textoResultado");
+var puntajeTexto = document.getElementById("puntaje");
+var volver = document.getElementById("volver");
+
+// EVENTO BOTÓN REINICIAR
+
+document.getElementById("reiniciar").addEventListener("click", function () {
+  puntaje = 0;
+  document.getElementById("puntaje").textContent = puntaje;
+  document.getElementById("puntaje-actual").textContent = puntaje;
+
+  var cats = document.querySelectorAll(".categoria");
+  for (var i = 0; i < cats.length; i++) {
+      cats[i].classList.remove("destacada");
   }
-
-  //Verificacion de respuestas
-  function verificarRespuesta(correcta) {
-    pantallaPregunta.classList.remove("visible");
-    pantallaResultado.classList.add("visible");
-  
-    if (correcta){
-      textoResultado.textContent = "CORRECTO +100 PUNTOS";
-      iconoResultado.innerHTML = '<img src="correcto.png" alt="Correcto" class="icono-resultado-img">';
-      puntaje += 100;
-    }else {
-      textoResultado.textContent = "INCORRECTO";
-      iconoResultado.innerHTML = '<img src="incorrecto.png" alt="Incorrecto" class="icono-resultado-img">';
-    }
-  
-    puntajeTexto.textContent = puntaje;
-    document.getElementById("puntaje-actual").textContent = puntaje;
-  }
-  
-  volver.addEventListener("click", () => {
-    pantallaResultado.classList.remove("visible");
-    inicio.classList.add("visible");
-  });
-
-  // Funcion aleatorio
-const botonGirar = document.getElementById("Girar");
-const categorias = document.querySelectorAll(".categoria");
-let intervalo;
-let indiceActual = 0;
-let girando = false;
-botonGirar.addEventListener("click", () =>{
-  if (girando) return; 
-  girando = true;
-  //numero de vueltas aleatorio
-  let vueltas = 15 + Math.floor(Math.random() *10); // el primer num son las vueltas antes de escoger, dependiendo a cuantas vueltas se quiere que de minimo se debe cambiar este num.
-  let contador = 0;
-
-  // efecto visual cada vez que el "giro" pasa por una categoria 
-  intervalo = setInterval(() => {
-    // Quita el resaltado anterior
-    categorias.forEach(c => c.classList.remove("destacada"));
-
-    // Agrega el efecto a la categoría actual
-    categorias[indiceActual].classList.add("destacada");
-
-    //avanza al siguiente índice
-    indiceActual = (indiceActual + 1) % 5; //5 es por el numero de categorias, depende de cuantas haya
-    contador++;
-
-    // Si se cumple el número de vueltas para de girar
-    if (contador >= vueltas) {
-      clearInterval(intervalo);
-      girando = false;
-
-      // Esta parte es la que elige a la categoria a la que se llegó
-      const categoriaSeleccionada = categorias[(indiceActual -1 + 5) % 5]; //el 5 es por el length de categorias
-      const categoriaNombre = categoriaSeleccionada.dataset.categoria;
-      // pausa antes de mostrar la pregunta
-      setTimeout(() => {
-        mostrarPregunta(categoriaNombre);
-      }, 500);
-    }
-  }, 150); // vel del giro
 });
 
+// CLICK EN CATEGORÍA
+var catBtns = document.querySelectorAll(".categoria");
+for (var i = 0; i < catBtns.length; i++) {
+  catBtns[i].addEventListener("click", function () {
+      mostrarPregunta(this.getAttribute("data-categoria"));
+  });
+}
+
+// MOSTRAR UNA PREGUNTA
+function mostrarPregunta(categoria) {
+  categoriaActual = categoria;
+  var lista = preguntas[categoria];
+  var pregunta = lista[Math.floor(Math.random() * lista.length)];
+
+  inicio.className = "pantalla";
+  pantallaPregunta.className = "pantalla visible";
+
+  categoriaNombre.textContent = categoria;
+  textoPregunta.textContent = pregunta.texto;
+  opciones.innerHTML = "";
+
+  for (var i = 0; i < pregunta.opciones.length; i++) {
+      var boton = document.createElement("button");
+      boton.textContent = String.fromCharCode(65 + i) + ". " + pregunta.opciones[i];
+
+      // CERRAR SOBRE EL VALOR DE i
+      boton.setAttribute("data-index", i);
+
+      boton.onclick = function () {
+          var idx = parseInt(this.getAttribute("data-index"));
+          verificarRespuesta(idx === pregunta.correcta);
+      };
+
+      opciones.appendChild(boton);
+  }
+}
+
+// VERIFICAR RESPUESTA
+function verificarRespuesta(correcta) {
+  pantallaPregunta.className = "pantalla";
+  pantallaResultado.className = "pantalla visible";
+
+  if (correcta) {
+      textoResultado.textContent = "CORRECTO +100 PUNTOS";
+      iconoResultado.innerHTML = '<img src="correcto.png" class="icono-resultado-img">';
+      puntaje += 100;
+  } else {
+      textoResultado.textContent = "INCORRECTO";
+      iconoResultado.innerHTML = '<img src="incorrecto.png" class="icono-resultado-img">';
+  }
+
+  puntajeTexto.textContent = puntaje;
+  document.getElementById("puntaje-actual").textContent = puntaje;
+}
+
+// VOLVER AL INICIO
+volver.addEventListener("click", function () {
+  pantallaResultado.className = "pantalla";
+  inicio.className = "pantalla visible";
+});
+
+// RULETA (GIRO DE CATEGORÍAS)
+var botonGirar = document.getElementById("girar");
+var categorias = document.querySelectorAll(".categoria");
+
+var intervalo;
+var indiceActual = 0;
+var girando = false;
+
+botonGirar.addEventListener("click", function () {
+  if (girando) return;
+  girando = true;
+
+  var vueltas = 15 + Math.floor(Math.random() * 10);
+  var contador = 0;
+
+  intervalo = setInterval(function () {
+
+      // quitar destacada
+      for (var i = 0; i < categorias.length; i++) {
+          categorias[i].classList.remove("destacada");
+      }
+
+      // agregar destacada
+      categorias[indiceActual].classList.add("destacada");
+
+      indiceActual = (indiceActual + 1) % categorias.length;
+      contador++;
+
+      if (contador >= vueltas) {
+          clearInterval(intervalo);
+          girando = false;
+
+          var idxSel = (indiceActual - 1 + categorias.length) % categorias.length;
+          var catElegida = categorias[idxSel].getAttribute("data-categoria");
+
+          setTimeout(function () {
+              mostrarPregunta(catElegida);
+          }, 500);
+      }
+
+  }, 150);
+
+});
